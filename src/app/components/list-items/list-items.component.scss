@@ -1,0 +1,36 @@
+.listItems-card-footer {
+    background-color: #fff;
+}
+
+.onlyFirstImage-1 {
+    padding: 50px 0;
+}
+
+.imageHolder {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+}
+
+.imageWidth {
+    width: 110px;
+}
+
+.iconPlacement {
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+.favIconStyles {
+    cursor: pointer;
+    font-size: 1.6rem;
+    color: #CECECE;
+    fill: none;
+    &:hover {
+        color: #FF0058;
+    }
+}

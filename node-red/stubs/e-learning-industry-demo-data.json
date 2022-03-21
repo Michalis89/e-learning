@@ -10,9 +10,27 @@
             "star_rating": 4,
             "no_of_reviews": 18,
             "image": "https://cdn.elearningindustry.com/wp-content/uploads/2019/08/2fbcba0245fd2185a95e6cb1bef13e8d.png",
-            "license": "license Type 1",
-            "deplyment_method": "Deplyment Method 1",
-            "free-trail": "7 days free-trail"
+            "filters": [{
+                    "type": "industry",
+                    "name": "Airlines/Aviation",
+                    "id": "1"
+                },
+                {
+                    "type": "industry",
+                    "name": "Automotive",
+                    "id": "2"
+                },
+                {
+                    "type": "deployment",
+                    "name": "Desktop Application",
+                    "id": "1"
+                },
+                {
+                    "type": "license",
+                    "name": "Free",
+                    "id": "1"
+                }
+            ]
         },
         {
             "id": 2,
@@ -21,9 +39,32 @@
             "star_rating": 4,
             "no_of_reviews": 224,
             "image": "https://cdn.elearningindustry.com/wp-content/uploads/2015/10/cb70d6dadbe6b1b47fe9df9910b80cd7.png",
-            "license": "license Type 2",
-            "deplyment_method": "Deplyment Method 2",
-            "free-trail": "7 days free-trail"
+            "filters": [{
+                    "type": "industry",
+                    "name": "Airlines/Aviation",
+                    "id": "1"
+                },
+                {
+                    "type": "deployment",
+                    "name": "Desktop Application",
+                    "id": "1"
+                },
+                {
+                    "type": "deployment",
+                    "name": "Mobile Application",
+                    "id": "2"
+                },
+                {
+                    "type": "license",
+                    "name": "Free",
+                    "id": "1"
+                },
+                {
+                    "type": "license",
+                    "name": "Paid",
+                    "id": "2"
+                }
+            ]
         },
         {
             "id": 3,
@@ -32,9 +73,22 @@
             "star_rating": 0,
             "no_of_reviews": 0,
             "image": "https://cdn.elearningindustry.com/wp-content/uploads/2021/08/c02c055c2971a0ba25f4ac82ce2da4e7.png",
-            "license": "license Type 2",
-            "deplyment_method": "Deplyment Method 2",
-            "free-trail": "30 Days free-trail"
+            "filters": [{
+                    "type": "industry",
+                    "name": "Automotive",
+                    "id": "2"
+                },
+                {
+                    "type": "deployment",
+                    "name": "Desktop Application",
+                    "id": "1"
+                },
+                {
+                    "type": "license",
+                    "name": "Paid",
+                    "id": "2"
+                }
+            ]
         },
         {
             "id": 4,
@@ -43,9 +97,17 @@
             "star_rating": 4,
             "no_of_reviews": 63,
             "image": "https://cdn.elearningindustry.com/wp-content/uploads/2019/09/8333b0a083a68aea2be924f6adc1b0f3.png",
-            "license": "license Type 3",
-            "deplyment_method": "Deplyment Method 1",
-            "free-free-trail": "No free-trail"
+            "filters": [{
+                    "type": "deployment",
+                    "name": "Desktop Application",
+                    "id": "1"
+                },
+                {
+                    "type": "license",
+                    "name": "Paid",
+                    "id": "2"
+                }
+            ]
         },
         {
             "id": 5,
@@ -54,9 +116,37 @@
             "star_rating": 5,
             "no_of_reviews": 2,
             "image": "https://cdn.elearningindustry.com/wp-content/uploads/2018/01/541b6cce8f6436433ad564a0792c8d62.png",
-            "license": "license Type 3",
-            "deplyment_method": "Deplyment Method 3",
-            "free-free-trail": "7 Days free-trail"
+            "filters": [{
+                    "type": "industry",
+                    "name": "Airlines/Aviation",
+                    "id": "1"
+                },
+                {
+                    "type": "industry",
+                    "name": "Automotive",
+                    "id": "2"
+                },
+                {
+                    "type": "deployment",
+                    "name": "Desktop Application",
+                    "id": "1"
+                },
+                {
+                    "type": "deployment",
+                    "name": "Mobile Application",
+                    "id": "2"
+                },
+                {
+                    "type": "license",
+                    "name": "Free",
+                    "id": "1"
+                },
+                {
+                    "type": "license",
+                    "name": "Paid",
+                    "id": "2"
+                }
+            ]
         },
         {
             "id": 6,
@@ -65,9 +155,22 @@
             "star_rating": 4,
             "no_of_reviews": 10,
             "image": "https://cdn.elearningindustry.com/wp-content/uploads/2018/01/65a3197d6fc68ebf86f10af618a6ad2b.png",
-            "license": "license Type 1",
-            "deplyment_method": "Deplyment Method 3",
-            "free-free-trail": "60 Days free-trail"
+            "filters": [{
+                    "type": "industry",
+                    "name": "Airlines/Aviation",
+                    "id": "1"
+                },
+                {
+                    "type": "industry",
+                    "name": "Automotive",
+                    "id": "2"
+                },
+                {
+                    "type": "license",
+                    "name": "Free",
+                    "id": "1"
+                }
+            ]
         }
     ]
 }

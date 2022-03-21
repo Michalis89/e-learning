@@ -1,0 +1,9 @@
+<app-header-space></app-header-space>
+<div class="container">
+    <app-filters></app-filters>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col" *ngFor="let item of listItems$ | async">
+            <app-list-items [listItems]="item"> </app-list-items>
+        </div>
+    </div>
+</div>

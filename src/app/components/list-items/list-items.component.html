@@ -1,0 +1,21 @@
+<div class="card h-100">
+    <span class="iconPlacement">
+        <i [ngClass]="isIconHovered ? 'bi bi-heart-fill' : 'bi bi-heart'" (mouseenter)="mouseEnter()"
+            (mouseleave)="mouseLeave()" class="favIconStyles"></i>
+    </span>
+
+    <div class="imageHolder">
+        <img [ngClass]="'onlyFirstImage-' + listItems.id" src="{{ listItems.image }}" class="card-img-top image-responsive imageWidth" alt=" {{ listItems.id }}." />
+    </div>
+    <div class="card-body">
+        <h5 class="card-title fw-bolder">{{ listItems.name }}</h5>
+        <app-rating [rating]="listItems.star_rating" [numberOfReviews]="listItems.no_of_reviews"></app-rating>
+        <p class="card-text">{{ listItems.desc }}</p>
+    </div>
+    <div class="card-footer border-0 listItems-card-footer">
+        <a href=" " class="btn btn-warning rounded-pill w-100 fw-bold">Visit website</a>
+    </div>
+    <div class="card-footer border-0 listItems-card-footer">
+        <a href=" " class="btn textBlueColor w-100 fw-bold">Read more</a>
+    </div>
+</div>

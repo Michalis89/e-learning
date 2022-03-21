@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col">
+        <div class="filtersPosition">
+            <div class="dropdown" *ngFor="let category of filterCategories$ | async">
+                <a class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="spacingArrow fw-bold"> {{category |titlecase}}</span>
+                </a>
+                <ul *ngIf="category==='license'" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li *ngFor="let subCategory of licenseSubCategories$ | async">
+                        <a class="dropdown-item fw-bold" (click)="selectFilter(subCategory)">
+                            {{subCategory | titlecase}}
+                        </a>
+                    </li>
+                </ul>
+                <ul *ngIf="category==='deployment'" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li *ngFor="let subCategory of deploymentSubCategories$ | async">
+                        <a class="dropdown-item fw-bold" (click)="selectFilter(subCategory)">
+                            {{subCategory| titlecase}}
+                        </a>
+                    </li>
+                </ul>
+                <ul *ngIf="category==='industry'" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li *ngFor="let subCategory of industrySubCategories$ | async">
+                        <a class="dropdown-item fw-bold" (click)="selectFilter(subCategory)">
+                            {{subCategory| titlecase}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        chips
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="infoPostion">
+            <div> {{totalItems$ | async}}: Listings <span class="clearFilters">Clear filters</span>
+            </div>
+            <div class="dropdown sorting">
+                <a class="btn dropdown-toggle sortingFocus" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="fw-bold"> Sort by:
+                        <span class="spacingArrowSort">{{sortedBy | titlecase}}</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li *ngFor="let option of sortedOption">
+                        <a class="dropdown-item fw-bold" (click)="changeSorting(option)">{{option}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

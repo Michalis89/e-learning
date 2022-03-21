@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
+/* Importing Bootstrap SCSS file. */
+
+@import '~bootstrap/scss/bootstrap';
+@import 'assets/fonts/_fonts.scss';
+// primary font
+$primary_font: 'Euclid Circular A';
+body {
+    font-family: $primary_font;
+    font-weight: 600;
+    background-color: #F7F7F7;
+}
+
+$main-letter-blue: #0A0ACA;
+.textBlueColor {
+    color: $main-letter-blue;
+}

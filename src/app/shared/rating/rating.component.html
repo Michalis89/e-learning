@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col">
+        <ngb-rating class="rating-stars" [(rate)]="rating" [max]="5" [readonly]="true"></ngb-rating>
+        <span>
+      <b>{{ rating }}</b> / 5
+    </span>
+    </div>
+    <div class="col fw-bold textBlueColor">{{ numberOfReviews }} reviews</div>
+</div>
