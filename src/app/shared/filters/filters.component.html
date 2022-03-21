@@ -48,7 +48,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <li *ngFor="let option of sortedOption">
-                        <a class="dropdown-item fw-bold" (click)="changeSorting(option)">{{option}}</a>
+                        <a class="dropdown-item fw-bold" (click)="changeSorting(option)">{{option |titlecase}}</a>
                     </li>
                 </ul>
             </div>

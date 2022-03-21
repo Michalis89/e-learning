@@ -147,7 +147,7 @@ export class AppState implements NgxsAfterBootstrap {
       const sortByReview = state.listItems;
       ctx.patchState({
         ...state,
-        listItems: sortByReview.slice().sort((a, b) => a.no_of_reviews - b.no_of_reviews),
+        listItems: sortByReview.slice().sort((a, b) => b.no_of_reviews - a.no_of_reviews),
       });
     }
   }
