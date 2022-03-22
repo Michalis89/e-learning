@@ -32,18 +32,24 @@
 </div>
 <div class="row">
     <div class="col">
-        chips
+        <div *ngFor="let chipValue of Object.values(selected)" class="chip">
+            {{chipValue}}
+            <i class="close fas fa-times"></i>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col">
         <div class="infoPostion">
-            <div> {{totalItems$ | async}}: Listings <span class="clearFilters">Clear filters</span>
+            <div class="centerPositionVertical"> {{totalItems$ | async}}: Listings
+                <span *ngIf="filterStatus$ |async" class="clearFilters" (click)="clearFilters()">
+                    Clear filters
+                </span>
             </div>
             <div class="dropdown sorting">
                 <a class="btn dropdown-toggle sortingFocus" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="fw-bold"> Sort by:
-                        <span class="spacingArrowSort">{{sortedBy | titlecase}}</span>
+                        <span class=" spacingArrowSort">{{sortedBy | titlecase}}</span>
                     </span>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">

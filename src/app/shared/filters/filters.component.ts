@@ -2,7 +2,12 @@ import { Select, Store } from '@ngxs/store';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AppState } from 'src/app/state/app.state';
 import { Observable } from 'rxjs';
-import { GetListItems, SortListItems } from 'src/app/state/app.actions';
+import {
+  FilterStatus,
+  GetFilteredList,
+  GetListItems,
+  SortListItems,
+} from 'src/app/state/app.actions';
 
 @Component({
   selector: 'app-filters',
@@ -15,13 +20,18 @@ export class FiltersComponent {
   @Select(AppState.licenseSubCategories) licenseSubCategories$: Observable<any>;
   @Select(AppState.deploymentSubCategories) deploymentSubCategories$: Observable<any>;
   @Select(AppState.industrySubCategories) industrySubCategories$: Observable<any>;
+  @Select(AppState.selectedFilters) selectedFilters$: Observable<any>;
+  @Select(AppState.filterStatus) filterStatus$: Observable<boolean>;
   sortedBy = 'Default';
   sortedOption = ['default', 'name', 'reviews'];
+  selected: any = [];
+  Object = Object;
 
   constructor(private store: Store) {}
 
   selectFilter(selected: string) {
-    console.log(selected);
+    this.selected.push(selected);
+    this.store.dispatch(new GetFilteredList(this.selected));
   }
 
   changeSorting(sortType: string) {
@@ -30,5 +40,11 @@ export class FiltersComponent {
     if (this.sortedBy === 'default') {
       this.store.dispatch(new GetListItems());
     }
+  }
+
+  clearFilters() {
+    this.selected = [];
+    this.store.dispatch(new GetFilteredList(this.selected));
+    this.store.dispatch(new FilterStatus(false));
   }
 }

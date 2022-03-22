@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector, NgxsAfterBootstrap } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 import {
+  FilterStatus,
+  GetFilteredList,
   GetFiltersCategories,
   GetFiltersSubCategories,
   GetListItems,
@@ -18,6 +20,8 @@ export interface AppStateModel {
   deploymentSubCategories: any;
   industrySubCategories: any;
   nameSortItems: any;
+  selectedFilters: any;
+  filterStatus: boolean;
 }
 
 @State<AppStateModel>({
@@ -30,6 +34,8 @@ export interface AppStateModel {
     deploymentSubCategories: [],
     industrySubCategories: [],
     nameSortItems: [],
+    selectedFilters: [],
+    filterStatus: false,
   },
 })
 @Injectable()
@@ -62,6 +68,14 @@ export class AppState implements NgxsAfterBootstrap {
   @Selector()
   static industrySubCategories(state: AppStateModel) {
     return state.industrySubCategories;
+  }
+  @Selector()
+  static selectedFilters(state: AppStateModel) {
+    return state.selectedFilters;
+  }
+  @Selector()
+  static filterStatus(state: AppStateModel) {
+    return state.filterStatus;
   }
 
   @Action(GetListItems)
@@ -133,7 +147,7 @@ export class AppState implements NgxsAfterBootstrap {
   }
 
   @Action(SortListItems)
-  sortListItems(ctx: StateContext<AppStateModel>, action: SortListItems, sortType: string) {
+  sortListItems(ctx: StateContext<AppStateModel>, action: SortListItems) {
     if (action.sortType == 'name') {
       const state = ctx.getState();
       const sortByName = state.listItems;
@@ -150,6 +164,29 @@ export class AppState implements NgxsAfterBootstrap {
         listItems: sortByReview.slice().sort((a, b) => b.no_of_reviews - a.no_of_reviews),
       });
     }
+  }
+
+  @Action(GetFilteredList)
+  getFIlteredList(ctx: StateContext<AppStateModel>, action: GetFilteredList) {
+    const state = ctx.getState();
+    let selectedFilters = [];
+    selectedFilters.push(action.filterSelected);
+    let newSelectedFilters = selectedFilters.map((item) => {
+      return Object.assign({}, item);
+    });
+    ctx.patchState({
+      ...state,
+      selectedFilters: newSelectedFilters,
+      filterStatus: true,
+    });
+  }
+
+  @Action(FilterStatus)
+  filterStatus(ctx: StateContext<AppStateModel>, action: FilterStatus) {
+    const filterStatus = ctx.getState().filterStatus;
+    ctx.patchState({
+      filterStatus: !filterStatus,
+    });
   }
 
   ngxsAfterBootstrap(ctx: StateContext<AppStateModel>) {

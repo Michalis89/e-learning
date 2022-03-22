@@ -59,6 +59,31 @@
     margin-left: 20px;
 }
 
+.chip {
+    display: inline-block;
+    height: 32px;
+    padding: 0 12px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 32px;
+    color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    background-color: #eceff1;
+    border-radius: 16px;
+    -webkit-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+.centerPositionVertical {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-left: 5px;
+}
+
 // .dropdown:hover {
 //     border: 1px solid #006DFF;
 //     border-bottom: 1px solid #fff;
