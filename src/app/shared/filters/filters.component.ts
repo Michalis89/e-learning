@@ -3,9 +3,9 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AppState } from 'src/app/state/app.state';
 import { Observable } from 'rxjs';
 import {
-  FilterStatus,
-  GetFilteredList,
+  SetFilterStatus,
   GetListItems,
+  SetFilteredList,
   SortListItems,
 } from 'src/app/state/app.actions';
 
@@ -25,13 +25,13 @@ export class FiltersComponent {
   sortedBy = 'Default';
   sortedOption = ['default', 'name', 'reviews'];
   selected: any = [];
+  uniqueSelectedArray: any = [];
   Object = Object;
 
   constructor(private store: Store) {}
 
   selectFilter(selected: string) {
-    this.selected.push(selected);
-    this.store.dispatch(new GetFilteredList(this.selected));
+    this.store.dispatch(new SetFilteredList(selected));
   }
 
   changeSorting(sortType: string) {
@@ -42,9 +42,22 @@ export class FiltersComponent {
     }
   }
 
+  removeFilter(chipFilterValue: any) {
+    const index = this.uniqueSelectedArray.indexOf(chipFilterValue);
+    if (index > -1) {
+      this.uniqueSelectedArray.splice(index, 1);
+      this.selected.splice(index, 1);
+    }
+    if (this.uniqueSelectedArray.length === 0) {
+      this.store.dispatch(new SetFilterStatus(false));
+      this.store.dispatch(new GetListItems());
+    }
+  }
+
   clearFilters() {
     this.selected = [];
-    this.store.dispatch(new GetFilteredList(this.selected));
-    this.store.dispatch(new FilterStatus(false));
+    this.uniqueSelectedArray = [];
+    this.store.dispatch(new SetFilterStatus(false));
+    this.store.dispatch(new GetListItems());
   }
 }

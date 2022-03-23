@@ -32,9 +32,9 @@
 </div>
 <div class="row">
     <div class="col">
-        <div *ngFor="let chipValue of Object.values(selected)" class="chip">
+        <div *ngFor="let chipValue of Object.values(uniqueSelectedArray)" class="chip fw-bold">
             {{chipValue}}
-            <i class="close fas fa-times"></i>
+            <button type="button" class="btn-close closeBtn" aria-label="Close" (click)="removeFilter(chipValue)"></button>
         </div>
     </div>
 </div>

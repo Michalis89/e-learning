@@ -18,12 +18,12 @@ export class SortListItems {
   constructor(public sortType: string) {}
 }
 
-export class GetFilteredList {
-  static readonly type = '[App] GetFilteredList';
-  constructor(public filterSelected?: string) {}
+export class SetFilteredList {
+  static readonly type = '[App] SetFilteredList';
+  constructor(public filterSelected: string) {}
 }
 
-export class FilterStatus {
+export class SetFilterStatus {
   static readonly type = '[App] FilterStatus';
-  constructor(public FilterStatus: boolean) {}
+  constructor(public filterStatus: boolean) {}
 }

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector, NgxsAfterBootstrap } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 import {
-  FilterStatus,
-  GetFilteredList,
+  SetFilterStatus,
   GetFiltersCategories,
   GetFiltersSubCategories,
   GetListItems,
+  SetFilteredList,
   SortListItems,
 } from './app.actions';
 import { AppService } from '../app.service';
@@ -46,8 +46,6 @@ export class AppState implements NgxsAfterBootstrap {
   static listItems(state: AppStateModel): ListItems[] {
     return state.listItems;
   }
-
-  @Selector()
   static totalItems(state: AppStateModel) {
     return state.totalItems;
   }
@@ -166,23 +164,24 @@ export class AppState implements NgxsAfterBootstrap {
     }
   }
 
-  @Action(GetFilteredList)
-  getFIlteredList(ctx: StateContext<AppStateModel>, action: GetFilteredList) {
+  @Action(SetFilteredList)
+  setFilteredList(ctx: StateContext<AppStateModel>, action: SetFilteredList) {
     const state = ctx.getState();
-    let selectedFilters = [];
-    selectedFilters.push(action.filterSelected);
-    let newSelectedFilters = selectedFilters.map((item) => {
-      return Object.assign({}, item);
-    });
+    let newSelectedFilters: any;
+    console.log(newSelectedFilters, 'prin to push');
+    state.selectedFilters.push(action.filterSelected);
+    console.log(newSelectedFilters, 'meta to push');
+
     ctx.patchState({
       ...state,
       selectedFilters: newSelectedFilters,
       filterStatus: true,
     });
+    console.log(newSelectedFilters, 'newSelectedFilters');
   }
 
-  @Action(FilterStatus)
-  filterStatus(ctx: StateContext<AppStateModel>, action: FilterStatus) {
+  @Action(SetFilterStatus)
+  setFilterStatus(ctx: StateContext<AppStateModel>, action: SetFilterStatus) {
     const filterStatus = ctx.getState().filterStatus;
     ctx.patchState({
       filterStatus: !filterStatus,

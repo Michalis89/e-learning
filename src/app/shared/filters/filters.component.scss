@@ -61,19 +61,27 @@
 
 .chip {
     display: inline-block;
-    height: 32px;
-    padding: 0 12px;
+    height: 35px;
+    padding: 0 15px;
     margin-right: 1rem;
     margin-bottom: 1rem;
     font-size: 13px;
     font-weight: 500;
     line-height: 32px;
-    color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
     background-color: #eceff1;
     border-radius: 16px;
-    -webkit-transition: all .3s linear;
-    transition: all .3s linear;
+    transition: all 0.3s linear;
+}
+
+.closeBtn {
+    font-size: 10px;
+    margin-left: 10px;
+    opacity: 0.3;
+}
+
+.closeBtn:focus {
+    box-shadow: none;
 }
 
 .centerPositionVertical {
