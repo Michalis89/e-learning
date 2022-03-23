@@ -46,6 +46,7 @@ export class AppState implements NgxsAfterBootstrap {
   static listItems(state: AppStateModel): ListItems[] {
     return state.listItems;
   }
+
   static totalItems(state: AppStateModel) {
     return state.totalItems;
   }
@@ -59,18 +60,22 @@ export class AppState implements NgxsAfterBootstrap {
   static licenseSubCategories(state: AppStateModel) {
     return state.licenseSubCategories;
   }
+
   @Selector()
   static deploymentSubCategories(state: AppStateModel) {
     return state.deploymentSubCategories;
   }
+
   @Selector()
   static industrySubCategories(state: AppStateModel) {
     return state.industrySubCategories;
   }
+
   @Selector()
   static selectedFilters(state: AppStateModel) {
     return state.selectedFilters;
   }
+
   @Selector()
   static filterStatus(state: AppStateModel) {
     return state.filterStatus;
@@ -81,6 +86,8 @@ export class AppState implements NgxsAfterBootstrap {
     return this.appService.getData().pipe(
       tap((response) => {
         const state = ctx.getState();
+        console.log(response['total']);
+
         ctx.patchState({
           ...state,
           listItems: response.data,

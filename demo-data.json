@@ -1,0 +1,178 @@
+{
+    "data": {
+        "page": 1,
+        "per_page": 6,
+        "total": 6,
+        "total_pages": 1,
+        "data": [{
+                "id": 1,
+                "name": "Thinkific",
+                "desc": "Thinkific’s powerful platform makes it easy to share your knowledge, grow your audience, and scale the business you already love. Whether you’re educating 10 students or 10 million, you’ve got the easiest technology and best support in the business.",
+                "star_rating": 4,
+                "no_of_reviews": 18,
+                "image": "https://cdn.elearningindustry.com/wp-content/uploads/2019/08/2fbcba0245fd2185a95e6cb1bef13e8d.png",
+                "filters": [{
+                        "type": "industry",
+                        "name": "Airlines/Aviation",
+                        "id": "1"
+                    },
+                    {
+                        "type": "industry",
+                        "name": "Automotive",
+                        "id": "2"
+                    },
+                    {
+                        "type": "deployment",
+                        "name": "Desktop Application",
+                        "id": "1"
+                    },
+                    {
+                        "type": "license",
+                        "name": "Free",
+                        "id": "1"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "TalentLMS",
+                "desc": "Easy to learn, easy to use, and easy to like, TalentLMS is designed to get a 'yes' from everyone, including C-level execs, budget heads, and busy employees. Now, instead of checking out, your whole organization leans into training.",
+                "star_rating": 4,
+                "no_of_reviews": 224,
+                "image": "https://cdn.elearningindustry.com/wp-content/uploads/2015/10/cb70d6dadbe6b1b47fe9df9910b80cd7.png",
+                "filters": [{
+                        "type": "industry",
+                        "name": "Airlines/Aviation",
+                        "id": "1"
+                    },
+                    {
+                        "type": "deployment",
+                        "name": "Desktop Application",
+                        "id": "1"
+                    },
+                    {
+                        "type": "deployment",
+                        "name": "Mobile Application",
+                        "id": "2"
+                    },
+                    {
+                        "type": "license",
+                        "name": "Free",
+                        "id": "1"
+                    },
+                    {
+                        "type": "license",
+                        "name": "Paid",
+                        "id": "2"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "7taps Microlearning",
+                "desc": "FREE microlearning LMS everyone's talking about.",
+                "star_rating": 0,
+                "no_of_reviews": 0,
+                "image": "https://cdn.elearningindustry.com/wp-content/uploads/2021/08/c02c055c2971a0ba25f4ac82ce2da4e7.png",
+                "filters": [{
+                        "type": "industry",
+                        "name": "Automotive",
+                        "id": "2"
+                    },
+                    {
+                        "type": "deployment",
+                        "name": "Desktop Application",
+                        "id": "1"
+                    },
+                    {
+                        "type": "license",
+                        "name": "Paid",
+                        "id": "2"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Adobe Captivate Prime",
+                "desc": "Adobe Captivate Prime - A full featured LMS with a learner-first approach.",
+                "star_rating": 4,
+                "no_of_reviews": 63,
+                "image": "https://cdn.elearningindustry.com/wp-content/uploads/2019/09/8333b0a083a68aea2be924f6adc1b0f3.png",
+                "filters": [{
+                        "type": "deployment",
+                        "name": "Desktop Application",
+                        "id": "1"
+                    },
+                    {
+                        "type": "license",
+                        "name": "Paid",
+                        "id": "2"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "eFront",
+                "desc": "Train your employees, partners and customers with eFront, the powerful learning management system that shapes to fit your needs.",
+                "star_rating": 5,
+                "no_of_reviews": 2,
+                "image": "https://cdn.elearningindustry.com/wp-content/uploads/2018/01/541b6cce8f6436433ad564a0792c8d62.png",
+                "filters": [{
+                        "type": "industry",
+                        "name": "Airlines/Aviation",
+                        "id": "1"
+                    },
+                    {
+                        "type": "industry",
+                        "name": "Automotive",
+                        "id": "2"
+                    },
+                    {
+                        "type": "deployment",
+                        "name": "Desktop Application",
+                        "id": "1"
+                    },
+                    {
+                        "type": "deployment",
+                        "name": "Mobile Application",
+                        "id": "2"
+                    },
+                    {
+                        "type": "license",
+                        "name": "Free",
+                        "id": "1"
+                    },
+                    {
+                        "type": "license",
+                        "name": "Paid",
+                        "id": "2"
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Learndash",
+                "desc": "Light, flexible, most trusted WordPress LMS. Easily create & sell courses, deliver quizzes, award certificates, manage users, download reports. LearnDash helps you access the latest eLearning industry trends for creating robust learning experiences.",
+                "star_rating": 4,
+                "no_of_reviews": 10,
+                "image": "https://cdn.elearningindustry.com/wp-content/uploads/2018/01/65a3197d6fc68ebf86f10af618a6ad2b.png",
+                "filters": [{
+                        "type": "industry",
+                        "name": "Airlines/Aviation",
+                        "id": "1"
+                    },
+                    {
+                        "type": "industry",
+                        "name": "Automotive",
+                        "id": "2"
+                    },
+                    {
+                        "type": "license",
+                        "name": "Free",
+                        "id": "1"
+                    }
+                ]
+            }
+        ]
+    }
+}

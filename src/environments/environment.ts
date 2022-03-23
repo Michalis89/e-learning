@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://localhost:1880/rest/e-learning-industry/demo-data/',
+  baseURL: 'http://localhost:3000/data',
 };
 
 /*
