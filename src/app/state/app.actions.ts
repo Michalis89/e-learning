@@ -3,12 +3,12 @@ export class GetListItems {
   constructor() {}
 }
 
-export class GetFiltersCategories {
-  static readonly type = '[App] GetFiltersCategories';
+export class GetFilterCategoriesType {
+  static readonly type = '[App] GetFilterCategoriesType';
   constructor() {}
 }
 
-export class GetFiltersSubCategories {
+export class GetFiltersCategoriesName {
   static readonly type = '[App] GetFiltersSubCategories';
   constructor() {}
 }
@@ -18,12 +18,20 @@ export class SortListItems {
   constructor(public sortType: string) {}
 }
 
-export class SetFilteredList {
-  static readonly type = '[App] SetFilteredList';
-  constructor(public filterSelected: string) {}
+export class SetSelectedFilters {
+  static readonly type = '[App] SetSelectedFilters';
+  constructor(public filterSelected: Array<any>) {}
 }
 
-export class SetFilterStatus {
+export class SetFilterChipStatus {
   static readonly type = '[App] FilterStatus';
-  constructor(public filterStatus: boolean) {}
+  constructor(public showFilterChips: boolean) {}
+}
+export class SetResultList {
+  static readonly type = '[App] SetResultList';
+  constructor() {}
+}
+export class DeleteAllFilters {
+  static readonly type = '[App] DeleteAllFilters';
+  constructor() {}
 }

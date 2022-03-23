@@ -2,40 +2,46 @@ import { Injectable } from '@angular/core';
 import { State, Action, StateContext, Selector, NgxsAfterBootstrap } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 import {
-  SetFilterStatus,
-  GetFiltersCategories,
-  GetFiltersSubCategories,
   GetListItems,
-  SetFilteredList,
   SortListItems,
+  SetFilterChipStatus,
+  GetFilterCategoriesType,
+  GetFiltersCategoriesName,
+  DeleteAllFilters,
+  SetResultList,
+  SetSelectedFilters,
 } from './app.actions';
 import { AppService } from '../app.service';
 import { ListItems } from '../models/listItems.model';
 
 export interface AppStateModel {
+  initialListItems: ListItems[];
   listItems: ListItems[];
   totalItems: number;
-  filterCategories: any;
-  licenseSubCategories: any;
-  deploymentSubCategories: any;
-  industrySubCategories: any;
+  filterCategoriesType: any;
+  licenseCategoryName: any;
+  deploymentCategoryName: any;
+  industryCategoryName: any;
   nameSortItems: any;
-  selectedFilters: any;
-  filterStatus: boolean;
+  selectedFilteredItems: any;
+  showFilterChips: boolean;
+  deletedFilter: boolean;
 }
 
 @State<AppStateModel>({
   name: 'AppState',
   defaults: {
+    initialListItems: [],
     listItems: [],
     totalItems: 0,
-    filterCategories: [],
-    licenseSubCategories: [],
-    deploymentSubCategories: [],
-    industrySubCategories: [],
+    filterCategoriesType: [],
+    licenseCategoryName: [],
+    deploymentCategoryName: [],
+    industryCategoryName: [],
     nameSortItems: [],
-    selectedFilters: [],
-    filterStatus: false,
+    selectedFilteredItems: [],
+    showFilterChips: false,
+    deletedFilter: false,
   },
 })
 @Injectable()
@@ -52,33 +58,37 @@ export class AppState implements NgxsAfterBootstrap {
   }
 
   @Selector()
-  static filterCategories(state: AppStateModel) {
-    return state.filterCategories;
+  static filterCategoriesType(state: AppStateModel) {
+    return state.filterCategoriesType;
   }
 
   @Selector()
-  static licenseSubCategories(state: AppStateModel) {
-    return state.licenseSubCategories;
+  static licenseCategoryName(state: AppStateModel) {
+    return state.licenseCategoryName;
   }
 
   @Selector()
-  static deploymentSubCategories(state: AppStateModel) {
-    return state.deploymentSubCategories;
+  static deploymentCategoryName(state: AppStateModel) {
+    return state.deploymentCategoryName;
   }
 
   @Selector()
-  static industrySubCategories(state: AppStateModel) {
-    return state.industrySubCategories;
+  static industryCategoryName(state: AppStateModel) {
+    return state.industryCategoryName;
   }
 
   @Selector()
-  static selectedFilters(state: AppStateModel) {
-    return state.selectedFilters;
+  static selectedFilteredItems(state: AppStateModel) {
+    return state.selectedFilteredItems;
   }
 
   @Selector()
-  static filterStatus(state: AppStateModel) {
-    return state.filterStatus;
+  static showFilterChips(state: AppStateModel) {
+    return state.showFilterChips;
+  }
+  @Selector()
+  static deletedFilter(state: AppStateModel) {
+    return state.deletedFilter;
   }
 
   @Action(GetListItems)
@@ -86,10 +96,10 @@ export class AppState implements NgxsAfterBootstrap {
     return this.appService.getData().pipe(
       tap((response) => {
         const state = ctx.getState();
-        console.log(response['total']);
 
         ctx.patchState({
           ...state,
+          initialListItems: response.data,
           listItems: response.data,
           totalItems: response['total'],
         });
@@ -97,54 +107,54 @@ export class AppState implements NgxsAfterBootstrap {
     );
   }
 
-  @Action(GetFiltersCategories)
-  getFiltersCategories(ctx: StateContext<AppStateModel>, action: GetFiltersCategories) {
+  @Action(GetFilterCategoriesType)
+  getFilterCategoriesType(ctx: StateContext<AppStateModel>, action: GetFilterCategoriesType) {
     return this.appService.getData().pipe(
       tap((response) => {
-        const filterTypeCategories: any = [];
+        const filterCategoriesType: any = [];
         response.data.forEach((filter) => {
           filter['filters'].forEach((filterType: any) => {
-            filterTypeCategories.push(filterType.type);
+            filterCategoriesType.push(filterType.type);
           });
-          const uniquefilterTypeCategories = [...new Set(filterTypeCategories)].reverse();
+          const uniquefilterCategoriesType = [...new Set(filterCategoriesType)].reverse();
           const state = ctx.getState();
           ctx.patchState({
             ...state,
-            filterCategories: uniquefilterTypeCategories,
+            filterCategoriesType: uniquefilterCategoriesType,
           });
         });
       })
     );
   }
 
-  @Action(GetFiltersSubCategories)
-  getFiltersSubCategories(ctx: StateContext<AppStateModel>, action: GetFiltersSubCategories) {
+  @Action(GetFiltersCategoriesName)
+  getFiltersCategoriesName(ctx: StateContext<AppStateModel>, action: GetFiltersCategoriesName) {
     return this.appService.getData().pipe(
       tap((response) => {
-        const licenseSubCategories: any = [];
+        const licenseCategoryName: any = [];
         const deploymentSubeCategories: any = [];
-        const industrySubCategories: any = [];
+        const industryCategoryName: any = [];
         response.data.forEach((filter) => {
           filter['filters'].forEach((filterType: any) => {
             if (filterType.type === 'license') {
-              licenseSubCategories.push(filterType.name);
+              licenseCategoryName.push(filterType.name);
             }
             if (filterType.type === 'deployment') {
               deploymentSubeCategories.push(filterType.name);
             }
             if (filterType.type === 'industry') {
-              industrySubCategories.push(filterType.name);
+              industryCategoryName.push(filterType.name);
             }
           });
-          const uniqueLicenseSubCategories = [...new Set(licenseSubCategories)];
+          const uniquelicenseCategoryName = [...new Set(licenseCategoryName)];
           const uniqueDeploymentSubeCategories = [...new Set(deploymentSubeCategories)];
-          const uniqueIndustrySubCategories = [...new Set(industrySubCategories)];
+          const uniqueindustryCategoryName = [...new Set(industryCategoryName)];
           const state = ctx.getState();
           ctx.patchState({
             ...state,
-            licenseSubCategories: uniqueLicenseSubCategories,
-            deploymentSubCategories: uniqueDeploymentSubeCategories,
-            industrySubCategories: uniqueIndustrySubCategories,
+            licenseCategoryName: uniquelicenseCategoryName,
+            deploymentCategoryName: uniqueDeploymentSubeCategories,
+            industryCategoryName: uniqueindustryCategoryName,
           });
         });
       })
@@ -153,16 +163,19 @@ export class AppState implements NgxsAfterBootstrap {
 
   @Action(SortListItems)
   sortListItems(ctx: StateContext<AppStateModel>, action: SortListItems) {
+    const state = ctx.getState();
     if (action.sortType == 'name') {
-      const state = ctx.getState();
       const sortByName = state.listItems;
+      console.log(sortByName);
+
       ctx.patchState({
         ...state,
-        listItems: sortByName.slice().sort((a, b) => (a.name > b.name ? 1 : -1)),
+        listItems: sortByName
+          .slice()
+          .sort((a, b) => (a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1)),
       });
     }
     if (action.sortType == 'reviews') {
-      const state = ctx.getState();
       const sortByReview = state.listItems;
       ctx.patchState({
         ...state,
@@ -171,34 +184,69 @@ export class AppState implements NgxsAfterBootstrap {
     }
   }
 
-  @Action(SetFilteredList)
-  setFilteredList(ctx: StateContext<AppStateModel>, action: SetFilteredList) {
+  @Action(SetSelectedFilters)
+  setSelectedFilters(ctx: StateContext<AppStateModel>, { filterSelected }: SetSelectedFilters) {
     const state = ctx.getState();
-    let newSelectedFilters: any;
-    console.log(newSelectedFilters, 'prin to push');
-    state.selectedFilters.push(action.filterSelected);
-    console.log(newSelectedFilters, 'meta to push');
 
     ctx.patchState({
       ...state,
-      selectedFilters: newSelectedFilters,
-      filterStatus: true,
+      selectedFilteredItems: filterSelected,
+      showFilterChips: true,
     });
-    console.log(newSelectedFilters, 'newSelectedFilters');
+
+    ctx.dispatch(new SetResultList());
   }
 
-  @Action(SetFilterStatus)
-  setFilterStatus(ctx: StateContext<AppStateModel>, action: SetFilterStatus) {
-    const filterStatus = ctx.getState().filterStatus;
+  @Action(SetResultList)
+  setResultList(ctx: StateContext<AppStateModel>) {
+    const state = ctx.getState();
+    const { initialListItems, selectedFilteredItems } = state;
+
+    const filteredListItems = this.filterList(initialListItems, selectedFilteredItems);
+
     ctx.patchState({
-      filterStatus: !filterStatus,
+      ...state,
+      listItems: filteredListItems,
+      totalItems: filteredListItems.length,
+    });
+  }
+
+  @Action(SetFilterChipStatus)
+  setFilterChipStatus(ctx: StateContext<AppStateModel>, { showFilterChips }: SetFilterChipStatus) {
+    const state = ctx.getState();
+    ctx.patchState({
+      ...state,
+      showFilterChips,
+    });
+  }
+
+  @Action(DeleteAllFilters)
+  deleteAllFilters(ctx: StateContext<AppStateModel>, action: DeleteAllFilters) {
+    const state = ctx.getState();
+
+    ctx.patchState({
+      ...state,
+      selectedFilteredItems: [],
+      showFilterChips: false,
     });
   }
 
   ngxsAfterBootstrap(ctx: StateContext<AppStateModel>) {
     console.log('The application has been fully rendered');
     ctx.dispatch(new GetListItems());
-    ctx.dispatch(new GetFiltersCategories());
-    ctx.dispatch(new GetFiltersSubCategories());
+    ctx.dispatch(new GetFilterCategoriesType());
+    ctx.dispatch(new GetFiltersCategoriesName());
+  }
+
+  private filterList(items: any, filters: any): ListItems[] {
+    const filteredResults = items.filter((item: any) => {
+      let itemFilters = item.filters.map((item: any) => item.name);
+
+      if (filters.every((filter: any) => itemFilters.includes(filter))) {
+        return item;
+      }
+    });
+
+    return filteredResults;
   }
 }
