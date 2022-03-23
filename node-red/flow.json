@@ -1,7 +1,56 @@
 [{
-    "id": "9a3d4076db3af0a5",
-    "type": "tab",
-    "label": "Flow 1",
-    "disable": false,
-    "info": ""
-}]
+        "id": "9a3d4076db3af0a5",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "37454cd75cc7ae46",
+        "type": "http in",
+        "z": "9a3d4076db3af0a5",
+        "name": "Get demo-data Directory",
+        "url": "/rest/e-learning-industry/demo-data/",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 270,
+        "y": 80,
+        "wires": [
+            [
+                "761fba66c6a4d9d5"
+            ]
+        ]
+    },
+    {
+        "id": "761fba66c6a4d9d5",
+        "type": "file in",
+        "z": "9a3d4076db3af0a5",
+        "name": "Demo-Data",
+        "filename": "./node-red/stubs/e-learning-industry-demo-data.json",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 710,
+        "y": 80,
+        "wires": [
+            [
+                "e6d831902ab699c8"
+            ]
+        ]
+    },
+    {
+        "id": "e6d831902ab699c8",
+        "type": "http response",
+        "z": "9a3d4076db3af0a5",
+        "name": "Response",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1240,
+        "y": 40,
+        "wires": []
+    }
+]
