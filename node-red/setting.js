@@ -65,7 +65,7 @@ module.exports = {
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
-    flowFilePretty: true,
+    //flowFilePretty: true,
 
     // By default, credentials are encrypted in storage using a generated key. To
     // specify your own secret, set the following property.
@@ -173,10 +173,10 @@ module.exports = {
     // in the HTTP nodes.
     // See https://github.com/troygoode/node-cors#configuration-options for
     // details on its contents. The following is a basic permissive set of options:
-    httpNodeCors: {
-        origin: "*",
-        methods: "GET,PUT,POST,DELETE",
-    },
+    //httpNodeCors: {
+    //    origin: "*",
+    //    methods: "GET,PUT,POST,DELETE"
+    //},
 
     // If you need to set an http proxy please set an environment variable
     // called http_proxy (or HTTP_PROXY) outside of Node-RED in the operating system.
@@ -288,4 +288,12 @@ module.exports = {
             audit: false
         }
     },
+
+    // Customising the editor
+    editorTheme: {
+        projects: {
+            // To enable the Projects feature, set this value to true
+            enabled: false
+        }
+    }
 }
